@@ -19,7 +19,7 @@ def generate_verification_code():
 # Function to send verification email
 def send_verification_email(receiver_email, verification_code, contact_name):
     sender_email = 'shouldtheone@mail.ru'
-    sender_password = '6pq8QkhvNpK4WBKTAUPX'
+    sender_password = 'ifhLrpT2NwEkZRkpGVWV'
 
     log_message("INFO", "Getting Sender Info", f"Sender: {sender_email}")
     log_message("INFO", "Security Code", f"Verification code: {verification_code}")
@@ -28,11 +28,11 @@ def send_verification_email(receiver_email, verification_code, contact_name):
     qr_code_image_url = "https://i.ibb.co/Y26Hyzt/Qr-Code-removebg-preview.png"  # URL of the hosted image
     
     html_message = f"""\
-    <html>
+<html>
 <head>
     <style>
         body {{
-            font-family: Georgia, serif;
+            font-family: 'Avenir Next','Arial';
             font-size: 18px;
             line-height: 1.6;
             margin: 0;
@@ -50,24 +50,37 @@ def send_verification_email(receiver_email, verification_code, contact_name):
             background-repeat: repeat; /* Repeat the background image */
         }}
         .header {{
-            background-color: #FFF2E1;
+            background-color: rgba(255, 242, 225, 0.1);
+            background-image: url('https://i.ibb.co/ZzLTdgp/output-onlinepngtools.png'); /* URL of the header background image */
             padding: 20px;
             text-align: center;
             border-radius: 10px 10px 0 0;
         }}
         .header img {{
-            width: 100%;
-            max-height: 200px;
+            width: 80%; /* Adjust the size of the logo */
+            max-height: 150px; /* Adjust the maximum height of the logo */
             object-fit: contain;
         }}
         .content {{
             padding: 20px;
         }}
         .footer {{
-            background-color: #FFF2E1;
+            background-color: rgba(255, 242, 225, 0.1);
+            background-image: url('https://i.ibb.co/ZzLTdgp/output-onlinepngtools.png'); /* URL of the footer background image */
             padding: 10px;
             text-align: center;
             border-radius: 0 0 10px 10px;
+            color: #333; /* Set footer text color */
+        }}
+        .footer p {{
+            margin: 0; /* Remove default margins */
+        }}
+        .footer a {{
+            color: #007bff; /* Set link color */
+            text-decoration: none; /* Remove underline */
+        }}
+        .footer a:hover {{
+            text-decoration: underline; /* Add underline on hover */
         }}
         .payment-option {{
             margin-bottom: 20px;
@@ -95,13 +108,37 @@ def send_verification_email(receiver_email, verification_code, contact_name):
             height: 100%;
             object-fit: cover;
         }}
+        /* Sponsor and Team Section */
+        .sponsors {{
+            padding: 20px;
+            border-radius: 10px; /* Add border radius */
+            margin-top: 20px; /* Add margin to separate from content */
+        }}
+        .sponsor-images {{
+            display: flex;
+            justify-content: space-between; /* Distribute items evenly */
+            margin-bottom: 20px; /* Add margin bottom */
+        }}
+        .sponsor-images img {{
+            width: 48%; /* Adjust image width */
+            max-height: 150px; /* Adjust maximum height */
+            object-fit: contain;
+        }}
+        .team-info {{
+            margin-top: 20px; /* Add margin to separate from sponsors */
+        }}
+        .team-info h2 {{
+            margin-bottom: 10px; /* Add margin bottom to the heading */
+        }}
+        .team-info p {{
+            margin: 0; /* Remove default margins */
+        }}
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <img src="https://i.ibb.co/CnqvVVT/Whats-App-Image-2024-04-25-at-11-13-57-AM-removebg-preview.png" alt="Logo">
-            
+            <img src="https://i.ibb.co/nwWKnNR/Screenshot-16-removebg-preview.png" alt="Logo">
         </div>
         <div class="content">
             <p>Dear {contact_name},</p>
@@ -133,12 +170,18 @@ def send_verification_email(receiver_email, verification_code, contact_name):
             <p>To finalize your application and seize this incredible opportunity, we kindly ask you to complete the application payment.</p>
         </div>
         <div class="footer">
-            <p>The Literary Society, <br> Wishes you the best of luck!</p>
+            <strong><p>The Literary Society, <br> Wishes you the best of luck!</p></strong>
+        </div>
+        <div class="sponsors">
+            <div class="sponsor-images">
+                <img src="https://i.ibb.co/Q64CZPh/Unisco.png" alt="UNESCO">
+                <img src="https://i.ibb.co/XjXYfr0/Starscholar.png" alt="STARSCHOLAR">
+            </div>
         </div>
     </div>
 </body>
 </html>
-    """
+"""
 
     try:
         server = smtplib.SMTP_SSL('smtp.mail.ru', 465)
@@ -163,7 +206,7 @@ def send_verification_email(receiver_email, verification_code, contact_name):
 # Main function
 def main():
     recipients = [
-        {"email": "shouldtheone@gmail.com", "name": "Serif"},
+        {"email": "shouldtheone@gmail.com", "name": "Noor"},
         {"email": "abonar213@gmail.com", "name": "abo"},
         # Add more recipients as needed
     ]
